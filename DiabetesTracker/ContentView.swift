@@ -84,17 +84,21 @@ struct ContentView: View {
                                 .padding([.horizontal, .bottom])
                             }
                             .navigationTitle("Add Glucose Entry")
-//                            .toolbar {
-//                                ToolbarItem(placement: .confirmationAction) {
-//                                    Button("Save") {
-//                                        doDismiss()
-//                                    }
-//                                    Button("Cancel", action: {
-//                                        isShowingForm.toggle()
-//                                        doDismiss()
-//                                    })
-//                                }
-//                            }
+                            .toolbar {
+                                ToolbarItem(placement: .confirmationAction) {
+                                    Button("Save") {
+                                        doDismiss()
+                                    }
+                                    .bold()
+                                }
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button("Cancel", action: {
+                                        isShowingForm.toggle()
+                                        doDismiss()
+                                    })
+                                    .foregroundColor(.red)
+                                }
+                            }
                             .padding()
                             .background(.bar)
                             

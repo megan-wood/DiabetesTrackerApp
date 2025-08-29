@@ -30,10 +30,10 @@
             filePath = "DiabetesTracker/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "ContentView"
-            landmarkType = "14">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "addEntry()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
