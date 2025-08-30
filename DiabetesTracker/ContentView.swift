@@ -14,7 +14,8 @@ struct ContentView: View {
     
     @State private var timestamp: Date = Date.now
     @State private var selectedType: GlucoseType = .fasting
-    @State private var enteredGlucose: Int = 0
+    @State private var enteredGlucose: String = ""
+//    @State private var enteredGlucose: Int? = nil
     @State private var isShowingForm = false
 
     var body: some View {
@@ -22,7 +23,8 @@ struct ContentView: View {
             List {
                 ForEach(entries) { entry in
                     NavigationLink {
-                        Text("Item at \(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("Entry at \(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard)) had glucose value \(entry.glucoseValue)")
+                            .padding()
                     } label: {
                         Text(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                     }
@@ -53,40 +55,58 @@ struct ContentView: View {
                                             selection: $timestamp,
                                             displayedComponents: [.date, .hourAndMinute]
                                         )
-                                        
+                                        HStack {
+                                            Text("Glucose value: ")
+                                            TextField("100",text: $enteredGlucose)
+                                                .keyboardType(.numberPad)
+                                                .multilineTextAlignment(.trailing)
+//                                            TextField("Glucose Value: ", value: $enteredGlucose, format: .number)
+//                                                .keyboardType(.numberPad)
+                                        }
+                                        Picker("Glucose Type", selection: $selectedType) {
+                                            Text("Fasting").tag(GlucoseType.fasting)
+                                            Text("Before Meal").tag(GlucoseType.beforeMeal)
+                                            Text("After Meal").tag(GlucoseType.afterMeal)
+                                        }
                                     }
                                 }
-                                HStack {
-                                    Button("Cancel", action: {
-                                        isShowingForm.toggle()
-                                        doDismiss()
-                                    })
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.red.opacity(0.2))
-                                    .foregroundColor(.red)
-                                    .cornerRadius(10)
-                                    
-                                    
-                                    Spacer()
-                                    
-                                    Button("Save") {
-                                        doDismiss()
-                                    }
-                                    .bold()
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                    .buttonStyle(.automatic)
-                                }
-                                .padding([.horizontal, .bottom])
+//                                HStack {
+//                                    Button("Cancel", action: {
+//                                        isShowingForm.toggle()
+//                                        doDismiss()
+//                                    })
+//                                    .frame(maxWidth: .infinity)
+//                                    .padding()
+//                                    .background(Color.red.opacity(0.2))
+//                                    .foregroundColor(.red)
+//                                    .cornerRadius(10)
+//                                    
+//                                    
+//                                    Spacer()
+//                                    
+//                                    Button("Save") {
+//                                        doDismiss()
+//                                    }
+//                                    .bold()
+//                                    .frame(maxWidth: .infinity)
+//                                    .padding()
+//                                    .background(Color.blue)
+//                                    .foregroundColor(.white)
+//                                    .cornerRadius(10)
+//                                    .buttonStyle(.automatic)
+//                                }
+//                                .padding([.horizontal, .bottom])
                             }
                             .navigationTitle("Add Glucose Entry")
                             .toolbar {
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("Save") {
+                                        if let glucoseInt = Int(enteredGlucose) {
+                                            let newEntry = GlucoseEntry(timestamp: timestamp, glucoseValue: glucoseInt, glucoseType: selectedType)
+                                            modelContext.insert(newEntry)
+
+                                        }
+                                        isShowingForm.toggle()
                                         doDismiss()
                                     }
                                     .bold()
@@ -115,15 +135,15 @@ struct ContentView: View {
     private func doDismiss() {
         timestamp = Date.now
         selectedType = .fasting
-        enteredGlucose = 0
+        enteredGlucose = ""
     }
 
-    private func addEntry() {
-        withAnimation {
-            let newEntry = GlucoseEntry(timestamp: Date(), glucoseValue: enteredGlucose, glucoseType: selectedType)
-            modelContext.insert(newEntry)
-        }
-    }
+//    private func addEntry() {
+//        withAnimation {
+//            let newEntry = GlucoseEntry(timestamp: Date(), glucoseValue: enteredGlucose, glucoseType: selectedType)
+//            modelContext.insert(newEntry)
+//        }
+//    }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
