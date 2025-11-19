@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		446754BC2ECDCEAB003976BA /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BB2ECDCEAB003976BA /* Auth */; };
+		446754BE2ECDCEAB003976BA /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BD2ECDCEAB003976BA /* Functions */; };
+		446754C02ECDCEAB003976BA /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BF2ECDCEAB003976BA /* PostgREST */; };
+		446754C22ECDCEAB003976BA /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C12ECDCEAB003976BA /* Realtime */; };
+		446754C42ECDCEAB003976BA /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C32ECDCEAB003976BA /* Storage */; };
+		446754C62ECDCEAB003976BA /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C52ECDCEAB003976BA /* Supabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4454D32B2E604FDF001B8A5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +61,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446754C02ECDCEAB003976BA /* PostgREST in Frameworks */,
+				446754BE2ECDCEAB003976BA /* Functions in Frameworks */,
+				446754C62ECDCEAB003976BA /* Supabase in Frameworks */,
+				446754BC2ECDCEAB003976BA /* Auth in Frameworks */,
+				446754C42ECDCEAB003976BA /* Storage in Frameworks */,
+				446754C22ECDCEAB003976BA /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +127,12 @@
 			);
 			name = DiabetesTracker;
 			packageProductDependencies = (
+				446754BB2ECDCEAB003976BA /* Auth */,
+				446754BD2ECDCEAB003976BA /* Functions */,
+				446754BF2ECDCEAB003976BA /* PostgREST */,
+				446754C12ECDCEAB003976BA /* Realtime */,
+				446754C32ECDCEAB003976BA /* Storage */,
+				446754C52ECDCEAB003976BA /* Supabase */,
 			);
 			productName = DiabetesTracker;
 			productReference = 4454D3182E604FDE001B8A5C /* DiabetesTracker.app */;
@@ -195,6 +216,9 @@
 			);
 			mainGroup = 4454D30F2E604FDD001B8A5C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4454D3192E604FDE001B8A5C /* Products */;
 			projectDirPath = "";
@@ -552,6 +576,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		446754BB2ECDCEAB003976BA /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		446754BD2ECDCEAB003976BA /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		446754BF2ECDCEAB003976BA /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		446754C12ECDCEAB003976BA /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		446754C32ECDCEAB003976BA /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		446754C52ECDCEAB003976BA /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4454D3102E604FDD001B8A5C /* Project object */;
 }

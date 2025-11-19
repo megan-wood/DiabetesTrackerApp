@@ -20,13 +20,14 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
+            
             List {
                 ForEach(entries) { entry in
                     NavigationLink {
                         Text("Entry at \(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard)) had glucose value \(entry.glucoseValue)")
                             .padding()
                     } label: {
-                        Text(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text("\(entry.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard)) had value \(entry.glucoseValue)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -57,7 +58,7 @@ struct ContentView: View {
                                         )
                                         HStack {
                                             Text("Glucose value: ")
-                                            TextField("100",text: $enteredGlucose)
+                                            TextField("ex: 100",text: $enteredGlucose)
                                                 .keyboardType(.numberPad)
                                                 .multilineTextAlignment(.trailing)
 //                                            TextField("Glucose Value: ", value: $enteredGlucose, format: .number)
@@ -100,6 +101,7 @@ struct ContentView: View {
                             .navigationTitle("Add Glucose Entry")
                             .toolbar {
                                 ToolbarItem(placement: .confirmationAction) {
+                                    // make it so you can only save once you have input info
                                     Button("Save") {
                                         if let glucoseInt = Int(enteredGlucose) {
                                             let newEntry = GlucoseEntry(timestamp: timestamp, glucoseValue: glucoseInt, glucoseType: selectedType)
