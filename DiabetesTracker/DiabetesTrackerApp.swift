@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct DiabetesTrackerApp: App {
+    
+    @StateObject var auth = AuthViewModel() // creates auth controller
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             GlucoseEntry.self,
@@ -26,6 +29,7 @@ struct DiabetesTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(auth)  // puts into SwiftUI environment so all view can access it
         }
         .modelContainer(sharedModelContainer)
     }

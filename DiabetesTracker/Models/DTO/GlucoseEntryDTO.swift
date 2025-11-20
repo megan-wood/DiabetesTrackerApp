@@ -5,6 +5,8 @@
 //  Created by Megan on 11/19/25.
 //
 
+import Foundation
+
 struct GlucoseEntryDTO: Codable, Identifiable {
     let id: Int
     let time: Date

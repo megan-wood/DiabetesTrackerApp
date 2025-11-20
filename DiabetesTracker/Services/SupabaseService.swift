@@ -10,12 +10,16 @@ import Foundation
 
 
 class SupabaseService {
-    static let shared = SupabaseService()
+    static let shared = SupabaseService()  // singleton service (one shared Supabase client)
     
-    private let supabase = SupabaseClient(
-        supabaseURL: URL(string: "https://tnjwlqnipgfxvbgfehng.supabase.co")!,
-        supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuandscW5pcGdmeHZiZ2ZlaG5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2NTA1MDIsImV4cCI6MjA2ODIyNjUwMn0.2Ajg9viCUvHW7y2FGmHIh97XcGCfuJ3ZtdCU3X2jutE"
-    )
+    let client: SupabaseClient
+    
+    private init() {
+        client = SupabaseClient(
+            supabaseURL: URL(string: "https://tnjwlqnipgfxvbgfehng.supabase.co")!,
+            supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuandscW5pcGdmeHZiZ2ZlaG5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2NTA1MDIsImV4cCI6MjA2ODIyNjUwMn0.2Ajg9viCUvHW7y2FGmHIh97XcGCfuJ3ZtdCU3X2jutE"
+        )
+    }
     
     //struct UserEntry: Decodable, Identifiable {
     //    let id: Int
@@ -23,12 +27,12 @@ class SupabaseService {
     //    let lastName: String
     //}
     
-    func fetchGlucoseEntries() async throws -> [GlucoseEntryDTO] {
-        try await supabase
-            .from("glucose_logs")
-            .select()
-            .execute()
-            .value
-        
-    }
+//    func fetchGlucoseEntries() async throws -> [GlucoseEntryDTO] {
+//        try await supabase
+//            .from("glucose_logs")
+//            .select()
+//            .execute()
+//            .value
+//        
+//    }
 }

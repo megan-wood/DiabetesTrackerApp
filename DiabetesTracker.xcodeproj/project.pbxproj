@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		446754BC2ECDCEAB003976BA /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BB2ECDCEAB003976BA /* Auth */; };
-		446754BE2ECDCEAB003976BA /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BD2ECDCEAB003976BA /* Functions */; };
-		446754C02ECDCEAB003976BA /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 446754BF2ECDCEAB003976BA /* PostgREST */; };
-		446754C22ECDCEAB003976BA /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C12ECDCEAB003976BA /* Realtime */; };
-		446754C42ECDCEAB003976BA /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C32ECDCEAB003976BA /* Storage */; };
-		446754C62ECDCEAB003976BA /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 446754C52ECDCEAB003976BA /* Supabase */; };
+		4494BAB32ECF332900400481 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BAB22ECF332900400481 /* Auth */; };
+		4494BAB52ECF332900400481 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BAB42ECF332900400481 /* Functions */; };
+		4494BAB72ECF332900400481 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BAB62ECF332900400481 /* PostgREST */; };
+		4494BAB92ECF332900400481 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BAB82ECF332900400481 /* Realtime */; };
+		4494BABB2ECF332900400481 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BABA2ECF332900400481 /* Storage */; };
+		4494BABD2ECF332900400481 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4494BABC2ECF332900400481 /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +61,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446754C02ECDCEAB003976BA /* PostgREST in Frameworks */,
-				446754BE2ECDCEAB003976BA /* Functions in Frameworks */,
-				446754C62ECDCEAB003976BA /* Supabase in Frameworks */,
-				446754BC2ECDCEAB003976BA /* Auth in Frameworks */,
-				446754C42ECDCEAB003976BA /* Storage in Frameworks */,
-				446754C22ECDCEAB003976BA /* Realtime in Frameworks */,
+				4494BAB72ECF332900400481 /* PostgREST in Frameworks */,
+				4494BAB52ECF332900400481 /* Functions in Frameworks */,
+				4494BABD2ECF332900400481 /* Supabase in Frameworks */,
+				4494BAB32ECF332900400481 /* Auth in Frameworks */,
+				4494BABB2ECF332900400481 /* Storage in Frameworks */,
+				4494BAB92ECF332900400481 /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,12 +127,12 @@
 			);
 			name = DiabetesTracker;
 			packageProductDependencies = (
-				446754BB2ECDCEAB003976BA /* Auth */,
-				446754BD2ECDCEAB003976BA /* Functions */,
-				446754BF2ECDCEAB003976BA /* PostgREST */,
-				446754C12ECDCEAB003976BA /* Realtime */,
-				446754C32ECDCEAB003976BA /* Storage */,
-				446754C52ECDCEAB003976BA /* Supabase */,
+				4494BAB22ECF332900400481 /* Auth */,
+				4494BAB42ECF332900400481 /* Functions */,
+				4494BAB62ECF332900400481 /* PostgREST */,
+				4494BAB82ECF332900400481 /* Realtime */,
+				4494BABA2ECF332900400481 /* Storage */,
+				4494BABC2ECF332900400481 /* Supabase */,
 			);
 			productName = DiabetesTracker;
 			productReference = 4454D3182E604FDE001B8A5C /* DiabetesTracker.app */;
@@ -589,32 +589,32 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		446754BB2ECDCEAB003976BA /* Auth */ = {
+		4494BAB22ECF332900400481 /* Auth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Auth;
 		};
-		446754BD2ECDCEAB003976BA /* Functions */ = {
+		4494BAB42ECF332900400481 /* Functions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Functions;
 		};
-		446754BF2ECDCEAB003976BA /* PostgREST */ = {
+		4494BAB62ECF332900400481 /* PostgREST */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = PostgREST;
 		};
-		446754C12ECDCEAB003976BA /* Realtime */ = {
+		4494BAB82ECF332900400481 /* Realtime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Realtime;
 		};
-		446754C32ECDCEAB003976BA /* Storage */ = {
+		4494BABA2ECF332900400481 /* Storage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Storage;
 		};
-		446754C52ECDCEAB003976BA /* Supabase */ = {
+		4494BABC2ECF332900400481 /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 446754BA2ECDCEAB003976BA /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
