@@ -10,13 +10,13 @@ import SwiftData
 
 @Model
 class GlucoseEntry {
-    @Attribute(.unique) var id: Int
+    @Attribute(.unique) var id: UUID = UUID()
     var time: Date
     var glucoseValue: Int
     var glucoseType: GlucoseType
     var notes: String
     
-    init(id: Int, time: Date, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
+    init(id: UUID, time: Date, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
         self.id = id
         self.time = time
         self.glucoseValue = glucoseValue

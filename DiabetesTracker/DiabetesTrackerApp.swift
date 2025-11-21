@@ -12,6 +12,7 @@ import SwiftData
 struct DiabetesTrackerApp: App {
     
     @StateObject var auth = AuthViewModel() // creates auth controller
+    @StateObject var data = DataViewModel()
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -30,6 +31,10 @@ struct DiabetesTrackerApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(auth)  // puts into SwiftUI environment so all view can access it
+                .environmentObject(data)
+//                .task {
+//                    await auth.signOut()
+//                }
         }
         .modelContainer(sharedModelContainer)
     }

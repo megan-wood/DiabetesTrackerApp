@@ -18,6 +18,11 @@ class SupabaseService {
         client = SupabaseClient(
             supabaseURL: URL(string: "https://tnjwlqnipgfxvbgfehng.supabase.co")!,
             supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuandscW5pcGdmeHZiZ2ZlaG5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2NTA1MDIsImV4cCI6MjA2ODIyNjUwMn0.2Ajg9viCUvHW7y2FGmHIh97XcGCfuJ3ZtdCU3X2jutE"
+//            options: SupabaseClientOptions(
+//                auth: AuthClientOptions(
+//                    emitLocalSessionAsInitialSession: true
+//                )
+//            )
         )
     }
     

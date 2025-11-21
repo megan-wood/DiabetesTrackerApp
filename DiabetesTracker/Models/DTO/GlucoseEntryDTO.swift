@@ -8,7 +8,7 @@
 import Foundation
 
 struct GlucoseEntryDTO: Codable, Identifiable {
-    let id: Int
+    let id: UUID
     let time: Date
     let glucoseValue: Int
     let glucoseType: GlucoseType

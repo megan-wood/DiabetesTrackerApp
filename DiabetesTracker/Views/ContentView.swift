@@ -192,3 +192,8 @@ struct ContentView: View {
 //    ContentView()
 //        .modelContainer(container)
 //}
+
+//#Preview {
+//    ContentView()
+//        .modelContainer(PreviewContainer.shared)
+//}
