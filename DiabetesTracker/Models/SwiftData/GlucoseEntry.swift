@@ -10,14 +10,16 @@ import SwiftData
 
 @Model
 class GlucoseEntry {
-    @Attribute(.unique) var id: UUID = UUID()
+    @Attribute(.unique) var row_id: UUID = UUID()
+    var user_id: UUID
     var time: Date
     var glucoseValue: Int
     var glucoseType: GlucoseType
     var notes: String
     
-    init(id: UUID, time: Date, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
-        self.id = id
+    init(row_id: UUID, user_id: UUID, time: Date, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
+        self.row_id = row_id
+        self.user_id = user_id
         self.time = time
         self.glucoseValue = glucoseValue
         self.glucoseType = glucoseType
@@ -28,11 +30,12 @@ class GlucoseEntry {
 extension GlucoseEntry {
     convenience init(from dto: GlucoseEntryDTO) {
         self.init(
-            id: dto.id,
+            row_id: dto.row_id,
+            user_id: dto.user_id,
             time: dto.time,
-            glucoseValue: dto.glucoseValue,
-            glucoseType: dto.glucoseType,
-            notes: dto.notes
+            glucoseValue: dto.glucose_value,
+            glucoseType: dto.type,
+            notes: dto.notes ?? ""  // default value of "" if nil
         )
     }
 }

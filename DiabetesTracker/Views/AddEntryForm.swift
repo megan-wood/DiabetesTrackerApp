@@ -59,7 +59,8 @@ struct AddEntryForm: View {
                     Button("Save") {
                         if let value = Int(glucose) {
                             let entry = GlucoseEntry(
-                                id: UUID(),
+                                row_id: UUID(),
+                                user_id: UUID(),  // FIXME: change to use user's id
                                 time: time,
                                 glucoseValue: value,
                                 glucoseType: type,

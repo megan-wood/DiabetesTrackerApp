@@ -8,9 +8,13 @@
 import Foundation
 
 struct GlucoseEntryDTO: Codable, Identifiable {
-    let id: UUID
+    let row_id: UUID
+    let user_id: UUID
     let time: Date
-    let glucoseValue: Int
-    let glucoseType: GlucoseType
-    let notes: String
+    let glucose_value: Int
+    let type: GlucoseType
+    let notes: String?  // notes can be null
+    
+    // map row_id to id for SwiftUI
+    var id: UUID { row_id }
 }

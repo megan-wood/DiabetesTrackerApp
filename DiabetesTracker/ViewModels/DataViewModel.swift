@@ -10,10 +10,22 @@ import Supabase
 
 @MainActor
 class DataViewModel: ObservableObject {
-    @Published var entries: [GlucoseEntryDTO] = []
+    @Published var entries: [GlucoseEntry] = []
     
     private let client = SupabaseService.shared.client
     
+    
+    func load() async {
+        do {
+            print("Loading entries")
+            let items = try await fetchEntries()
+            DispatchQueue.main.async {
+                self.entries = items
+            }
+        } catch {
+            print("Error loading entries:", error)
+        }
+    }
     
     func fetchEntries() async throws -> [GlucoseEntry] {
 //        do {
