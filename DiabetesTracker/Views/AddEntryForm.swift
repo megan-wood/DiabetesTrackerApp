@@ -10,6 +10,7 @@ import Foundation
 
 struct AddEntryForm: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var auth: AuthViewModel
     
     @State private var time: Date = Date.now
     @State private var glucose: String = ""
@@ -57,10 +58,14 @@ struct AddEntryForm: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
+                        guard let userId = auth.curUser?.id else {
+                            print("Error: no logged in user to add entry")
+                            return
+                        }
                         if let value = Int(glucose) {
                             let entry = GlucoseEntry(
                                 row_id: UUID(),
-                                user_id: UUID(),  // FIXME: change to use user's id
+                                user_id: userId,  // FIXME: change to use user's id
                                 time: time,
                                 glucoseValue: value,
                                 glucoseType: type,

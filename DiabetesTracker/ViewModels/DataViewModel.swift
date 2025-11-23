@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Supabase
+import Foundation
 
 @MainActor
 class DataViewModel: ObservableObject {
@@ -28,13 +29,37 @@ class DataViewModel: ObservableObject {
     }
     
     func fetchEntries() async throws -> [GlucoseEntry] {
-//        do {
-            let dtos: [GlucoseEntryDTO] = try await client
+        //        do {
+        let dtos: [GlucoseEntryDTO] = try await client
+            .from("glucose_logs")
+            .select()
+            .execute()
+            .value
+        return dtos.map { GlucoseEntry(from: $0) }
+    }
+    
+    func addEntryToSupabase(entry: GlucoseEntry) async {
+        let newEntry = GlucoseEntryDTO(
+            row_id: entry.row_id,
+            user_id: entry.user_id,
+            time: entry.time,
+            glucose_value: entry.glucoseValue,
+            type: entry.glucoseType,
+            notes: entry.notes
+        )
+        do {
+            let response: GlucoseEntryDTO = try await client
                 .from("glucose_logs")
+                .insert(newEntry)
                 .select()
+                .single()
                 .execute()
                 .value
-        return dtos.map { GlucoseEntry(from: $0) }
+            print("adding entry: ", response)
+        } catch {
+            print("error adding entry: \(error)")
+        }
+    }
 //            let response = try await client
 //                .from("glucose_logs")
 //                .select("*")
@@ -58,5 +83,5 @@ class DataViewModel: ObservableObject {
 //        } catch {
 //            print("Error fetching entries:", error)
 //        }
-    }
+//    }
 }

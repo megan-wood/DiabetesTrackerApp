@@ -45,7 +45,7 @@ struct DashboardView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         EditButton()
                     }
-                    ToolbarItem {
+                    ToolbarItem() {
                         Button {
                             isShowingForm = true
                         } label: {
@@ -71,8 +71,22 @@ struct DashboardView: View {
         }
         .sheet(isPresented: $isShowingForm) {
             AddEntryForm { entry in
-                modelContext.insert(entry)
+                data.entries.append(entry)
+                addEntryToSupabase(entry)
+                // add entry to supabase
+//                Task {
+//                    await data.addEntryToSupabase(entry)
+//                }
+//                modelContext.insert(entry)
             }
+        }
+    }
+    
+    // helper function to keep sheet synchronous, don't mixasync Tasks inside view-building closures
+    // wraps async call into separate function
+    func addEntryToSupabase(_ entry: GlucoseEntry) {
+        Task {
+            await data.addEntryToSupabase(entry: entry)
         }
     }
 }

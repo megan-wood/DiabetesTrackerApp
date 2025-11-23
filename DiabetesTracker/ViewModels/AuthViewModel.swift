@@ -12,6 +12,7 @@ import Supabase
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var isLoggedIn = false  // when value changes, notification signal to observing views or subscribers to update
+    @Published var curUser: User?
     
     private let client = SupabaseService.shared.client
     
@@ -24,12 +25,14 @@ class AuthViewModel: ObservableObject {
     func checkSession() async {
         let session = try? await client.auth.session
         isLoggedIn = (session != nil)
+        curUser = session?.user  // restore the user that supabase did
     }
     
     func signIn(email: String, password: String) async {
         do {
-            try await client.auth.signIn(email: email, password: password)
+            let session = try await client.auth.signIn(email: email, password: password)
             isLoggedIn = true
+            self.curUser = session.user
         } catch {
             print("Login error:", error)
         }
