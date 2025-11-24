@@ -64,11 +64,11 @@ struct DashboardView: View {
             }
             .buttonStyle(.bordered)
         }
-        .onAppear {
-            Task {
-                await data.load()
-            }
-        }
+//        .onAppear {
+//            Task {
+//                await data.load()
+//            }
+//        }
         .sheet(isPresented: $isShowingForm) {
             AddEntryForm { entry in
                 data.entries.append(entry)

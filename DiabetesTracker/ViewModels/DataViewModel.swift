@@ -12,9 +12,21 @@ import Foundation
 @MainActor
 class DataViewModel: ObservableObject {
     @Published var entries: [GlucoseEntry] = []
+    private var channel: RealtimeChannelV2?
     
     private let client = SupabaseService.shared.client
     
+    init() {
+        Task {
+            await load()
+        }
+        subscribeToRealtime()
+    }
+    
+//    deinit {
+//        channel?.unsubscribe()
+//        print("realtime channel unsubscribed")
+//    }
     
     func load() async {
         do {
@@ -36,6 +48,29 @@ class DataViewModel: ObservableObject {
             .execute()
             .value
         return dtos.map { GlucoseEntry(from: $0) }
+    }
+    
+    func subscribeToRealtime() {
+        let channel = client.channel("glucose-realtime")
+        
+        let subscription = channel.onPostgresChange(
+                AnyAction.self,
+                schema: "public",
+                table: "glucose_logs"
+            ) { change in
+                switch change {
+                case .insert(let action):
+                    print("inserted: ", action.record)
+                    entries.append(action.record)
+                case .update(let action):
+                    print("Updated:", action.oldRecord, "->", action.record)
+                case .delete(let action):
+                    print("Deleted:", action.oldRecord)
+                }
+            }
+        Task {
+            try await channel.subscribeWithError()
+        }
     }
     
     func addEntryToSupabase(entry: GlucoseEntry) async {
