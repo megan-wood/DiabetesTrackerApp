@@ -9,15 +9,15 @@ import Foundation
 import SwiftData
 
 @Model
-class GlucoseEntry {
+class GlucoseEntry : Identifiable {
     @Attribute(.unique) var row_id: UUID = UUID()
     var user_id: UUID
-    var time: Date
+    var time: String  // store in UTC String form
     var glucoseValue: Int
     var glucoseType: GlucoseType
     var notes: String
     
-    init(row_id: UUID, user_id: UUID, time: Date, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
+    init(row_id: UUID, user_id: UUID, time: String, glucoseValue: Int, glucoseType: GlucoseType, notes: String) {
         self.row_id = row_id
         self.user_id = user_id
         self.time = time
@@ -29,6 +29,10 @@ class GlucoseEntry {
 
 extension GlucoseEntry {
     convenience init(from dto: GlucoseEntryDTO) {
+//        let formatter = ISO8601DateFormatter()
+//        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+//        let parsedDate = formatter.date(from: dto.time) ?? Date()
         self.init(
             row_id: dto.row_id,
             user_id: dto.user_id,

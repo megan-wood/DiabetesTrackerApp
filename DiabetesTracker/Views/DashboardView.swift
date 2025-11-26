@@ -32,10 +32,12 @@ struct DashboardView: View {
                     } else {
                         ForEach(data.entries) { entry in
                             NavigationLink {
-                                Text("Entry at \(entry.time.formatted(date: .numeric, time: .standard)) had glucose value \(entry.glucoseValue)")
+                                // FIXME: reformat the time into local time instead of UTC for printing
+                                Text("Entry at  had glucose value \(entry.glucoseValue)")
+//                                Text("Notes: \(entry.notes)")
                                     .padding()
                             }  label: {
-                                Text("\(entry.time.formatted(date: .numeric, time: .standard)) • \(entry.glucoseValue)")
+                                Text("\(entry.time) • \(entry.glucoseValue)")
                                 
                             }
                         }
@@ -71,7 +73,7 @@ struct DashboardView: View {
 //        }
         .sheet(isPresented: $isShowingForm) {
             AddEntryForm { entry in
-                data.entries.append(entry)
+//                data.entries.append(entry)
                 addEntryToSupabase(entry)
                 // add entry to supabase
 //                Task {

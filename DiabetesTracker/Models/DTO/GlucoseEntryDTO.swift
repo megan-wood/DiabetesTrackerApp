@@ -10,7 +10,7 @@ import Foundation
 struct GlucoseEntryDTO: Codable, Identifiable {
     let row_id: UUID
     let user_id: UUID
-    let time: Date
+    let time: String
     let glucose_value: Int
     let type: GlucoseType
     let notes: String?  // notes can be null

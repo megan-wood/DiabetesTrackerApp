@@ -62,11 +62,15 @@ struct AddEntryForm: View {
                             print("Error: no logged in user to add entry")
                             return
                         }
+                        
+                        let isoFormatter = ISO8601DateFormatter()
+                        isoFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                        let utcString = isoFormatter.string(from: time)
                         if let value = Int(glucose) {
                             let entry = GlucoseEntry(
                                 row_id: UUID(),
-                                user_id: userId,  // FIXME: change to use user's id
-                                time: time,
+                                user_id: userId,
+                                time: utcString,
                                 glucoseValue: value,
                                 glucoseType: type,
                                 notes: notes
